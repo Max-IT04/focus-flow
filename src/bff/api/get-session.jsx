@@ -1,6 +1,4 @@
-import { transformSession } from '../transformers';
-
-export const getSession = async (hash) =>
-	fetch(`http://localhost:3003/sessions/?hash=${hash}`)
-		.then((loadedSession) => loadedSession.json())
-		.then(([loadedSession]) => loadedSession && transformSession(loadedSession));
+export const getSession = (hash) =>
+  fetch(`http://localhost:3001/sessions?hash=${hash}`)
+    .then((res) => res.json())
+    .then((sessions) => sessions[0]);

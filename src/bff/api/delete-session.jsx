@@ -1,7 +1,4 @@
-export const deleteSession = async (sessionId) =>
-	fetch(`http://localhost:3003/users/sessions/${sessionId}`, {
-		method: 'DELETE',
-	});
-
-
-
+export const deleteSession = (id) =>
+  fetch(`http://localhost:3001/sessions/${id}`, {
+    method: 'DELETE',
+  });

@@ -1,8 +1,10 @@
 import { Routes, Route } from "react-router-dom"
 import { Layout } from "./components/layout/Layout";
-import { PrivateRoute } from "./components/private-route/PrivateRoute";
+import { PrivateRoute } from "./components/private-route/private-route";
+import { Authorization } from "./pages";
 
-const Login = () => <div>Страница входа</div>
+
+// const Login = () => <div>Страница входа</div>
 const Register = () => <div>Страница регистрации</div>
 const Projects = () => <div>Список проектов</div>
 const ProjectForm = () => <div>Форма проекта</div>
@@ -14,7 +16,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Authorization />} />
       <Route path="/register" element={<Register />} />
       <Route element={<PrivateRoute />}>
         <Route element={<Layout />}>
