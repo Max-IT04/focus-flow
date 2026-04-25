@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom"
 import { Layout } from "./components/layout/Layout";
 import { PrivateRoute } from "./components/private-route/private-route";
-import { Authorization } from "./pages";
+import { Authorization, Registration } from "./pages";
 
 
 // const Login = () => <div>Страница входа</div>
-const Register = () => <div>Страница регистрации</div>
+// const registration = () => <div>Страница регистрации</div>
 const Projects = () => <div>Список проектов</div>
 const ProjectForm = () => <div>Форма проекта</div>
 const Timer = () => <div>Таймер</div>
@@ -16,8 +16,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={<Authorization />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/authorization" element={<Authorization />} />
+      <Route path="/registration" element={<Registration />} />
       <Route element={<PrivateRoute />}>
         <Route element={<Layout />}>
           <Route path="/" element={<Timer />} />

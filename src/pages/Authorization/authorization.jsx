@@ -27,7 +27,7 @@ const authFormSchema = yup.object().shape({
 const StyledLink = styled.div`
   text-align: center;
   text-decoration: underline;
-  margin: 20px 0;
+  margin: 20px 0 0 20px;
   font-size: 18px;
   cursor: pointer;
   color: #3b82f6;
@@ -91,7 +91,7 @@ const AuthorizationContainer = ({ className }) => {
           Войти
         </Button>
         {errorMessage && <AuthFormError>{errorMessage}</AuthFormError>}
-        <StyledLink onClick={() => window.location.href = 'register'}>
+        <StyledLink onClick={() => window.location.href = 'registration'}>
           Регистрация
         </StyledLink>
       </form>

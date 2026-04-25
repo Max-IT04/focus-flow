@@ -15,6 +15,7 @@ export const Button = styled(ButtonContainer)`
 	font-size: 16px;
 	width: ${({ width = '100%' }) => width};
 	height: 32px;
+	width: 321px;
 	border: 1px solid rgb(0, 0, 0);
 	background-color: rgb(238, 238, 238);
 

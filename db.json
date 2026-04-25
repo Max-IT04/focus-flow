@@ -5,6 +5,12 @@
       "login": "test@test.com",
       "password": "123456",
       "roleId": 1
+    },
+    {
+      "login": "maxim@mail.ru",
+      "password": "qwerty",
+      "roleId": 1,
+      "id": "dgdlqRjlwuk"
     }
   ],
   "projects": [],
@@ -18,6 +24,16 @@
         "roleId": 1
       },
       "id": "WbNFmYysLQI"
+    },
+    {
+      "hash": "5o1pqpdb1p",
+      "user": {
+        "login": "maxim@mail.ru",
+        "password": "йцукен",
+        "roleId": 1,
+        "id": "dgdlqRjlwuk"
+      },
+      "id": "ChH64pu6gUQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

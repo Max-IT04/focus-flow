@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { selectUserSession } from '../selectors';
+import { selectUserSession } from '../store/slices/user-slice';
 import { server } from '../bff';
 
 export const useServerRequest = () => {
