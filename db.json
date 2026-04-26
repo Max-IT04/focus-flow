@@ -8,7 +8,7 @@
     },
     {
       "login": "maxim@mail.ru",
-      "password": "qwerty",
+      "password": "qwerty123",
       "roleId": 1,
       "id": "dgdlqRjlwuk"
     }
@@ -26,14 +26,14 @@
       "id": "WbNFmYysLQI"
     },
     {
-      "hash": "5o1pqpdb1p",
+      "hash": "pvs1022nak9",
       "user": {
         "login": "maxim@mail.ru",
-        "password": "йцукен",
+        "password": "qwerty123",
         "roleId": 1,
         "id": "dgdlqRjlwuk"
       },
-      "id": "ChH64pu6gUQ"
+      "id": "WttzgKGNhc4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
