@@ -13,7 +13,14 @@
       "id": "dgdlqRjlwuk"
     }
   ],
-  "projects": [],
+  "projects": [
+    {
+      "name": "Тренировка ",
+      "description": "Жим",
+      "createdAt": "2026-04-28T16:06:00.106Z",
+      "id": "0SOUE2J_Lv0"
+    }
+  ],
   "sessions": [
     {
       "hash": "dmtwak6vv3",
