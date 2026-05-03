@@ -7,3 +7,5 @@ export * from './fetch-projects';
 export * from './add-project';
 export * from './update-project';
 export * from './remove-project';
+export * from './add-time-session';
+export * from './fetch-time-sessions';

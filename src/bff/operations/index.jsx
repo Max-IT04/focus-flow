@@ -5,3 +5,5 @@ export * from '../api/fetch-projects';
 export * from '../api/add-project';
 export * from '../api/update-project';
 export * from '../api/remove-project';
+export * from '../api/add-time-session';
+export * from '../api/fetch-time-sessions';

@@ -43,5 +43,43 @@
       "id": "WttzgKGNhc4"
     }
   ],
+  "timeSessions": [
+    {
+      "id": "1",
+      "projectId": "1",
+      "userId": "1",
+      "startTime": "2026-04-29T10:00:00.000Z",
+      "endTime": "2026-04-29T10:30:00.000Z",
+      "duration": 1800
+    },
+    {
+      "projectId": "0SOUE2J_Lv0",
+      "duration": 5,
+      "startTime": "2026-05-02T20:27:02.492Z",
+      "endTime": "2026-05-02T20:27:07.492Z",
+      "id": "keRb4glG70o"
+    },
+    {
+      "projectId": "0SOUE2J_Lv0",
+      "duration": 3,
+      "startTime": "2026-05-02T20:28:13.083Z",
+      "endTime": "2026-05-02T20:28:16.083Z",
+      "id": "QmgI49fmo5A"
+    },
+    {
+      "projectId": "0SOUE2J_Lv0",
+      "duration": 10,
+      "startTime": "2026-05-03T19:46:08.374Z",
+      "endTime": "2026-05-03T19:46:18.374Z",
+      "id": "JCoc-B5QclI"
+    },
+    {
+      "projectId": "0SOUE2J_Lv0",
+      "duration": 8,
+      "startTime": "2026-05-03T19:48:47.741Z",
+      "endTime": "2026-05-03T19:48:55.741Z",
+      "id": "UwPkcosw-aU"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

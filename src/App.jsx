@@ -2,13 +2,14 @@ import { Routes, Route } from "react-router-dom"
 import { Layout } from "./components/layout/Layout";
 import { PrivateRoute } from "./components/private-route/private-route";
 import { Authorization, Registration, Projects, ProjectForm } from "./pages";
+import { Timer } from "./pages/Timer/timer";
 
 
 // const Login = () => <div>Страница входа</div>
 // const registration = () => <div>Страница регистрации</div>
 // const Projects = () => <div>Список проектов</div>
 // const ProjectForm = () => <div>Форма проекта</div>
-const Timer = () => <div>Таймер</div>
+// const Timer = () => <div>Таймер</div>
 const Analytics = () => <div>Аналитика</div>
 const Settings = () => <div>Настройки</div>
 

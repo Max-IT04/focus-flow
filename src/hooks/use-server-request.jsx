@@ -8,7 +8,16 @@ export const useServerRequest = () => {
 
 	return useCallback(
 		(operation, ...params) => {
-			const request = ['register', 'authorize', 'fetchProjects', 'addProject', 'updateProject', 'removeProject'].includes(
+			const request = [
+				'register', 
+				'authorize', 
+				'fetchProjects', 
+				'addProject', 
+				'updateProject', 
+				'removeProject', 
+				'addTimeSession',
+				'fetchTimeSessions'
+			].includes(
 				operation,
 			)
 				? params
