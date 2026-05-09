@@ -3,6 +3,7 @@ import { Layout } from "./components/layout/Layout";
 import { PrivateRoute } from "./components/private-route/private-route";
 import { Authorization, Registration, Projects, ProjectForm } from "./pages";
 import { Timer } from "./pages/Timer/timer";
+import { Analytics } from "./pages/Analytics/analytics";
 
 
 // const Login = () => <div>Страница входа</div>
@@ -10,7 +11,7 @@ import { Timer } from "./pages/Timer/timer";
 // const Projects = () => <div>Список проектов</div>
 // const ProjectForm = () => <div>Форма проекта</div>
 // const Timer = () => <div>Таймер</div>
-const Analytics = () => <div>Аналитика</div>
+// const Analytics = () => <div>Аналитика</div>
 const Settings = () => <div>Настройки</div>
 
 function App() {
