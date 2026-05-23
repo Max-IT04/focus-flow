@@ -1,5 +1,10 @@
-export const fetchProjects = async () => {
-  const response = await fetch('http://localhost:3001/projects');
+export const fetchProjects = async (session) => {
+  const user = session?.user;
+  if (!user) {
+    return { error: 'Нет авторизации', res: null };
+  }
+
+  const response = await fetch(`http://localhost:3001/projects?userId=${user.id}`);
 
   if (!response.ok) {
     return { error: 'Ошибка загрузки проектов', res: null};

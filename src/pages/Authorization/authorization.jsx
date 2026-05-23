@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -48,6 +48,7 @@ const AuthorizationContainer = ({ className }) => {
 
   const [serverError, setServerError] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const session = useSelector(selectUserSession);
 
   if (session) {
@@ -63,6 +64,8 @@ const AuthorizationContainer = ({ className }) => {
 
       dispatch(setSession(res.session));
       dispatch(setUser(res.user));
+      localStorage.setItem('session', res.session); 
+      navigate('/');
     });
   };
 

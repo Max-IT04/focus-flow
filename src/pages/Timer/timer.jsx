@@ -1,20 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useServerRequest } from "../../hooks";
-import styled from "styled-components";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import { pauseTimer, resetTimer, setCurrentProject, startTimer, tick } from "../../store/slices/timer-slice";
 import { setProjects, setLoading } from "../../store/slices/projects-slice";
 import { setSessions, addSession, setLoading as setSessionsLoading } from '../../store/slices/time-sessions-slice';
-import { H2 } from "../../components";
+import { loadTimerState, restoreTimer } from '../../store/slices/timer-slice';
+import { H2, Loader } from "../../components";
+import { syncTimer } from '../../store/slices/timer-slice';
+import styled from "styled-components";
 
 const TimerContainer = () => {
   const dispatch = useDispatch();
   const request = useServerRequest();
-  const { projects } = useSelector(state => state.projects);
+  const { projects, loading } = useSelector(state => state.projects);
   const { currentProjectId, isRunning, seconds } = useSelector(state => state.timer);
   const { session, user } = useSelector(state => state.user);
   const { sessions } = useSelector(state => state.timeSessions);
+  const { startTime } = useSelector(state => state.timer);
 
+  // для восстановления из localStorage
+  useEffect(() => {
+    const savedState = loadTimerState();
+    if (savedState) {
+      dispatch(restoreTimer(savedState));
+    }
+  }, [dispatch]);
+
+  // для tick
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(tick());
@@ -22,6 +34,7 @@ const TimerContainer = () => {
     return () => clearInterval(interval);
   }, [dispatch]);
 
+  // для загрузки проектов
   useEffect(() => {
     if (projects.length === 0) {
       dispatch(setLoading(true));
@@ -34,6 +47,7 @@ const TimerContainer = () => {
     }
   }, [dispatch, request, projects.length]);
 
+  // для загрузки замеров
   useEffect(() => {
     if (currentProjectId) {
       dispatch(setSessionsLoading(true));
@@ -47,6 +61,35 @@ const TimerContainer = () => {
     }
   }, [currentProjectId]);
 
+  // visibilitychange
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden && isRunning && startTime) {
+        
+        const now = Date.now();
+        const expectedSeconds = Math.floor((now - startTime) / 1000);
+        if (Math.abs(seconds - expectedSeconds) > 1) {
+          dispatch(syncTimer(expectedSeconds));
+        }
+      }
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [isRunning, startTime, seconds]);
+
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (isRunning) {
+        e.preventDefault();
+        e.returnValue = 'Таймер ещё работает. Вы уверены, что хотите закрыть страницу?';
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [isRunning]);
+
   const formatTime = (totalSeconds) => {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -55,8 +98,6 @@ const TimerContainer = () => {
   };
 
   const saveTimeSession = async () => {
-    console.log('session:', session);
-    console.log('user:', user);  
     if (seconds === 0) return;
 
     const result = await request('addTimeSession', {
@@ -73,6 +114,8 @@ const TimerContainer = () => {
       alert('Время сохранено');
     }
   };
+
+  if (loading && projects.length === 0) return <Loader />
 
   return (
     <div>

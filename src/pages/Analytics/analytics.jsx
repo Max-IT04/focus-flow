@@ -4,15 +4,15 @@ import { useServerRequest } from "../../hooks";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
 import { setProjects, setLoading as setProjectsLoading } from '../../store/slices/projects-slice';
 import { setSessions, setLoading as setSessionsLoading } from '../../store/slices/time-sessions-slice';
-import { H2, Button, Input } from '../../components';
+import { H2, Button, Input, Loader } from '../../components';
 import styled from 'styled-components';
 
 
 const AnalyticsContainer = () => {
   const dispatch = useDispatch();
   const request = useServerRequest();
-  const { projects } = useSelector(state => state.projects);
-  const { sessions } = useSelector(state => state.timeSessions);
+  const { projects, loading: projectsLoading } = useSelector(state => state.projects);
+  const { sessions, loading: sessionsLoading } = useSelector(state => state.timeSessions);
 
   const [filterProjectId, setFilterProjectId] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -67,6 +67,8 @@ const AnalyticsContainer = () => {
       : b.duration - a.duration;
     }
   })
+
+  if (projectsLoading || sessionsLoading) return <Loader />
 
   return (
   <div>

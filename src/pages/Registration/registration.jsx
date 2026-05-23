@@ -50,6 +50,7 @@ const RegistrationContainer = ({ className }) => {
 
     dispatch(setSession(res.session));
     dispatch(setUser(res.user));
+    localStorage.setItem('session', res.session);  
     navigate('/');
   };
 

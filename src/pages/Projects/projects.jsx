@@ -4,6 +4,7 @@ import { useServerRequest } from "../../hooks";
 import { useEffect } from "react";
 import { H2 } from '../../components';
 import { useNavigate } from "react-router-dom";
+import { Loader } from "../../components/loader/loader";
 
 export const Projects = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ export const Projects = () => {
       dispatch(setLoading(false));
     });
   }, [dispatch, request]);
+
+  if (loading) return <Loader />;
 
   const handleDelete = async (id) => {
     if (window.confirm('Удалить проект?')) {

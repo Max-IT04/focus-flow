@@ -1,13 +1,19 @@
-export const addProject = async (projectData) => {
-  const response = await fetch('http://localhost:3001/projects', { 
+export const addProject = async (session, projectData) => {
+  const user = session?.user;
+  if (!user) {
+    return { error: 'Нет авторизации', res: null };
+  }
+
+  const response = await fetch('http://localhost:3001/projects', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify({
-      name: projectData.name, 
+      name: projectData.name,
       description: projectData.description,
-      createdAt: new Date().toISOString(), 
+      userId: user.id,
+      createdAt: new Date().toISOString(),
     }),
   });
 

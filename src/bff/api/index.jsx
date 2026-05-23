@@ -9,3 +9,6 @@ export * from './update-project';
 export * from './remove-project';
 export * from './add-time-session';
 export * from './fetch-time-sessions';
+export * from './update-user';
+export * from './update-password';
+export * from './get-session.jsx';
