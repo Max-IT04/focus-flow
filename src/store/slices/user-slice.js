@@ -13,6 +13,7 @@ const userSlice = createSlice({
       state.session = action.payload;
     },
     setUser: (state, action) => {
+      console.log('setUser reducer called with:', action.payload);
       state.user = action.payload;
     },
     logout: (state) => {

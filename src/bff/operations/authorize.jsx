@@ -12,6 +12,7 @@ export const authorize = async (authLogin, authPassword) => {
   }
 
   const session = sessions.create(user);
+
   return {
     error: null,
     res: {
@@ -19,6 +20,7 @@ export const authorize = async (authLogin, authPassword) => {
       login: user.login,
       roleId: user.roleId,
       session,
+      user,
     },
   };
 };

@@ -7,8 +7,12 @@ import * as yup from "yup";
 import { useServerRequest } from "../../hooks"; 
 import { logout, setUser } from "../../store/slices/user-slice";
 import { H2, Button, Input, AuthFormError } from '../../components';
-import styled from "styled-components";
 import { Authorization } from "../Authorization/authorization";
+import { resetProjects } from '../../store/slices/projects-slice';
+import { resetSessions } from '../../store/slices/time-sessions-slice';
+import { resetTimerState } from '../../store/slices/timer-slice';
+
+import styled from "styled-components";
 
 const passwordSchema = yup.object({
   oldPassword: yup.string().required('Введите старый пароль'),
@@ -85,7 +89,12 @@ const SettingsContainer = () => {
       await request('logout', session);
       localStorage.removeItem('session');
     }
+
     dispatch(logout());
+    dispatch(resetProjects());
+    dispatch(resetSessions());
+    dispatch(resetTimerState());
+    
     navigate('/authorization');
   }
 

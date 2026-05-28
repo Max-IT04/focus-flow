@@ -2,96 +2,147 @@
   "users": [
     {
       "login": "maxim@mail.ru",
-      "password": "12345678",
+      "password": "11111111",
       "roleId": 1,
       "id": "WnkCwm-_cQ8"
     },
     {
-      "login": "petr@mail.ru",
-      "password": "11111111",
+      "login": "petya@mail.ru",
+      "password": "22222222",
       "roleId": 1,
       "id": "U9XJxr41Oik"
+    },
+    {
+      "login": "new@mail.ru",
+      "password": "aaaaaaaa",
+      "roleId": 1,
+      "id": "dFOebOGk9IA"
     }
   ],
   "projects": [
     {
-      "id": "1",
-      "name": "Тестовый проект",
-      "description": "Описание",
-      "userId": "id_пользователя",
-      "createdAt": "2026-01-01"
-    },
-    {
       "name": "Тренировка ",
-      "description": "5*5",
+      "description": "жим лёжа",
       "userId": "WnkCwm-_cQ8",
-      "createdAt": "2026-05-23T19:18:29.804Z",
-      "id": "CGttLMg5M38"
+      "createdAt": "2026-05-27T09:26:03.587Z",
+      "id": "0RYt9tg_gAY"
     },
     {
-      "name": "Жим лёжа ",
-      "description": "3*3",
+      "name": "Чтение ",
+      "description": "Философия",
       "userId": "U9XJxr41Oik",
-      "createdAt": "2026-05-23T19:19:37.726Z",
-      "id": "DEaXeaxelBM"
+      "createdAt": "2026-05-27T09:27:01.903Z",
+      "id": "5nWNUXMufBk"
     }
   ],
   "sessions": [
     {
-      "hash": "dqewgnmvpq5",
+      "hash": "0vvsgc7nar3i",
       "user": {
         "login": "maxim@mail.ru",
         "password": "12345678",
         "roleId": 1,
         "id": "WnkCwm-_cQ8"
       },
-      "id": "kxpop7ZPkxM"
+      "id": "GRIB8kjUja0"
     },
     {
-      "hash": "er4gplqivis",
+      "hash": "9j59110fvaj",
       "user": {
-        "login": "petr@mail.ru",
-        "password": "11111111",
+        "login": "petya@mail.ru",
+        "password": "22222222",
         "roleId": 1,
         "id": "U9XJxr41Oik"
       },
-      "id": "37I-Ui-jVds"
+      "id": "Lab7UtEJ6-Q"
     },
     {
-      "hash": "60cfwr1pn5y",
+      "hash": "ggupfsvgv1",
       "user": {
         "login": "maxim@mail.ru",
         "password": "12345678",
         "roleId": 1,
         "id": "WnkCwm-_cQ8"
       },
-      "id": "VcAdm0sKTuQ"
+      "id": "SOIo9v873No"
+    },
+    {
+      "hash": "adlevnc1iar",
+      "user": {
+        "login": "maxim@mail.ru",
+        "password": "11111111",
+        "roleId": 1,
+        "id": "WnkCwm-_cQ8"
+      },
+      "id": "U9n69qWwYLU"
+    },
+    {
+      "hash": "cxxda4b3n4s",
+      "user": {
+        "login": "petya@mail.ru",
+        "password": "22222222",
+        "roleId": 1,
+        "id": "U9XJxr41Oik"
+      },
+      "id": "JrpnPCvpk3U"
+    },
+    {
+      "hash": "3fuff5oegix",
+      "user": {
+        "login": "maxim@mail.ru",
+        "password": "11111111",
+        "roleId": 1,
+        "id": "WnkCwm-_cQ8"
+      },
+      "id": "nAo6YnshAXM"
+    },
+    {
+      "hash": "onjm7ftdore",
+      "user": {
+        "login": "maxim@mail.ru",
+        "password": "11111111",
+        "roleId": 1,
+        "id": "WnkCwm-_cQ8"
+      },
+      "id": "9KTopT1Pejg"
+    },
+    {
+      "hash": "gz6z0403sgu",
+      "user": {
+        "login": "petya@mail.ru",
+        "password": "22222222",
+        "roleId": 1,
+        "id": "U9XJxr41Oik"
+      },
+      "id": "YJlW9gyKhEE"
+    },
+    {
+      "hash": "786o2yvytaf",
+      "user": {
+        "login": "maxim@mail.ru",
+        "password": "11111111",
+        "roleId": 1,
+        "id": "WnkCwm-_cQ8"
+      },
+      "id": "WczRCFbXjvE"
     }
   ],
   "timeSessions": [
     {
-      "id": "1",
-      "projectId": "1",
-      "userId": "id_пользователя",
-      "duration": 1800,
-      "startTime": "...",
-      "endTime": "..."
-    },
-    {
-      "projectId": "CGttLMg5M38",
+      "projectId": "0RYt9tg_gAY",
       "userId": "WnkCwm-_cQ8",
-      "duration": 7,
-      "startTime": "2026-05-23T19:18:36.980Z",
-      "endTime": "2026-05-23T19:18:43.980Z",
-      "id": "Ps_k91xD0wE"
+      "duration": 5,
+      "startTime": "2026-05-27T09:26:17.981Z",
+      "endTime": "2026-05-27T09:26:22.981Z",
+      "id": "7MKVELxT0ho"
     },
     {
-      "projectId": "DEaXeaxelBM",
+      "projectId": "5nWNUXMufBk",
       "userId": "U9XJxr41Oik",
       "duration": 5,
-      "startTime": "2026-05-23T19:19:43.781Z",
-      "endTime": "2026-05-23T19:19:48.782Z",
-      "id": "uy2BQu7Nv3A"
+      "startTime": "2026-05-27T09:27:06.424Z",
+      "endTime": "2026-05-27T09:27:11.424Z",
+      "id": "8rq1zE3JoPs"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

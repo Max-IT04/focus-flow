@@ -61,6 +61,13 @@ const timerSlice = createSlice({
       state.startTime = Date.now() - state.seconds * 1000;
       saveStateToLocalStorage(state);
     },
+    resetTimerState: (state) => {
+      state.currentProjectId = null;
+      state.isRunning = false;
+      state.seconds = 0;
+      state.startTime = null;
+      localStorage.removeItem('timerState');
+    }
   },
 });
 
@@ -72,6 +79,7 @@ export const {
   tick,
   restoreTimer, 
   syncTimer,
+  resetTimerState,
 } = timerSlice.actions;
 
 export default timerSlice.reducer;

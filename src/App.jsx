@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useServerRequest } from "./hooks";
 import { setSession, setUser } from './store/slices/user-slice';
@@ -10,6 +10,7 @@ import { Authorization, Registration, Projects, ProjectForm } from "./pages";
 import { Timer } from "./pages/Timer/timer";
 import { Analytics } from "./pages/Analytics/analytics";
 import { Settings } from "./pages/Settings/settings";
+import { Loader } from "./components";
 
 
 // const Login = () => <div>Страница входа</div>
@@ -21,9 +22,9 @@ import { Settings } from "./pages/Settings/settings";
 // const Settings = () => <div>Настройки</div>
 
 function App() {
-
   const dispatch = useDispatch();
   const request = useServerRequest();
+  const [isRestoring, setIsRestoring] = useState(true);
 
   useEffect(() => {
     const restoreSession = async () => {
@@ -33,15 +34,18 @@ function App() {
         if (!error && res) {
           dispatch(setSession(sessionId));
           dispatch(setUser(res.user));
-        }
-        if (!error && res) {
-          dispatch(setSession(sessionId));
-          dispatch(setUser(res.user));
+        } else if (sessionId) {
+          localStorage.removeItem('session');
         }
       }
+      setIsRestoring(false);
     };
     restoreSession();
   }, [dispatch]);
+
+  if (isRestoring) {
+    return <Loader />;
+  }
 
   return (
     <Routes>

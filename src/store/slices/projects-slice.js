@@ -22,6 +22,10 @@ const projectsSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
+    resetProjects: (state) => {
+      state.projects = [];
+      state.loading = false;
+    },
   },
 });
 
@@ -30,6 +34,7 @@ export const {
   addProject, 
   updateProject, 
   removeProject, 
-  setLoading 
+  setLoading,
+  resetProjects, 
 } = projectsSlice.actions;
 export default projectsSlice.reducer;

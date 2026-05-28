@@ -7,6 +7,6 @@ export const addUser = (login, password) =>
     body: JSON.stringify({
       login,
       password,
-      roleId: 1,        // обычный пользователь
+      roleId: 1,      
     }),
   }).then((createdUser) => createdUser.json());

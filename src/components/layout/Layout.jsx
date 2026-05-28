@@ -3,15 +3,23 @@ import { Header } from "../header";
 import styled from "styled-components";
 
 const LayoutContainer = styled.div`
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 const Main = styled.main`
   flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+  padding: ${({ theme }) => theme.spacing.lg};
+  // overflow-y: auto;
+  max-width: 1400px;
+  marhin: 0 auto;
+  width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 export const Layout = () => {

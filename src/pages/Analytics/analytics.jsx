@@ -48,7 +48,7 @@ const AnalyticsContainer = () => {
   }, []);
 
   const filteredSessions = sessions.filter(s => {
-    const sessionDate = new Date(s.startTime); // ← добавить эту строку
+    const sessionDate = new Date(s.startTime); 
     
     if (filterProjectId && s.projectId !== filterProjectId) return false;
     if (startDate && sessionDate < new Date(startDate)) return false;
@@ -156,7 +156,6 @@ const StatsContainer = styled.div`
 `;
 
 const StatCard = styled.div`
-  background: #f3f4f6;
   padding: 15px;
   border-radius: 8px;
   text-align: center;
@@ -183,7 +182,7 @@ const FiltersContainer = styled.div`
 
 const Select = styled.select`
   padding: 8px 12px;
-  border: 1px solid #d1d5db;
+  // border: 1px solid #d1d5db;
   border-radius: 6px;
   background: white;
   font-size: 14px;
@@ -197,14 +196,13 @@ const ChartsContainer = styled.div`
 `;
 
 const ChartCard = styled.div`
-  background: white;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 `;
 
 const SessionCard = styled.div`
-  background: #f9fafb;
+  // background: #f9fafb;
   padding: 10px;
   margin-bottom: 8px;
   border-radius: 6px;

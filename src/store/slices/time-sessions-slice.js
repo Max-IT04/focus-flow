@@ -21,6 +21,10 @@ const timeSessionsSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
+    resetSessions: (state) => {
+      state.sessions = [];
+      state.loading = false;
+    }
   },
 });
 
@@ -28,6 +32,7 @@ export const {
   setSessions, 
   addSession,
   removeSession,
-  setLoading
+  setLoading,
+  resetSessions,
 } = timeSessionsSlice.actions;
 export default timeSessionsSlice.reducer;

@@ -1,8 +1,6 @@
-import { selectUser } from "../../../store/slices/user-slice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -19,13 +17,13 @@ const Avatar = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #3498db;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   font-size: 18px;
-  color: #fff;
+  color: white;
 `;
 
 const UserName = styled.span`
@@ -33,7 +31,7 @@ const UserName = styled.span`
 `;
 
 export const Profile = () => {
-  const user = useSelector(selectUser);
+  const user = useSelector(state => state.user.user); // прямой доступ
   const navigate = useNavigate();
 
   const getInitials = () => {
@@ -49,5 +47,5 @@ export const Profile = () => {
       <UserName>{user?.login || "Пользователь"}</UserName>
       <Avatar>{getInitials()}</Avatar>
     </ProfileContainer>
-  )
-}
+  );
+};

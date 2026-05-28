@@ -66,6 +66,9 @@ const AuthorizationContainer = ({ className }) => {
       dispatch(setUser(res.user));
       localStorage.setItem('session', res.session); 
       navigate('/');
+      
+      console.log('Setting user:', res.user);
+      dispatch(setUser(res.user));
     });
   };
 

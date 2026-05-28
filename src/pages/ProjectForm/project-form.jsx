@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useServerRequest } from "../../hooks";
 import { addProject, updateProject } from '../../store/slices/projects-slice';
+import { Loader, AuthFormError } from "../../components";
 import styled from "styled-components";
-import { Loader } from "../../components";
+
 
 const schema = yup.object({
   name: yup.string().required('Название обязательно'),
@@ -64,7 +65,7 @@ const ProjectFormContainer = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register('name')} placeholder="Название проекта" />
-      {errors.name && <span>{errors.name.message}</span>}
+      {errors.name && <AuthFormError>{errors.name.message}</AuthFormError>}
 
       <textarea {...register('description')} placeholder="Описание" />
 
