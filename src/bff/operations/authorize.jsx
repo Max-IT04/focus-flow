@@ -1,4 +1,3 @@
-// bff/operations/authorize.jsx
 import { getUser } from '../api';
 import { sessions } from '../sessions';
 

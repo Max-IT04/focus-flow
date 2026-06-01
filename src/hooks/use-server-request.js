@@ -13,7 +13,6 @@ export const useServerRequest = () => {
       // Операции, которые НЕ требуют сессию
       const noSessionOps = ['register', 'authorize', 'getSession'];
       
-      // Формируем объект сессии
       const session = sessionId ? { hash: sessionId, user } : null;
       
       const request = noSessionOps.includes(operation)

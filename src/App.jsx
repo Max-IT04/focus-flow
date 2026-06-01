@@ -12,15 +12,6 @@ import { Analytics } from "./pages/Analytics/analytics";
 import { Settings } from "./pages/Settings/settings";
 import { Loader } from "./components";
 
-
-// const Login = () => <div>Страница входа</div>
-// const registration = () => <div>Страница регистрации</div>
-// const Projects = () => <div>Список проектов</div>
-// const ProjectForm = () => <div>Форма проекта</div>
-// const Timer = () => <div>Таймер</div>
-// const Analytics = () => <div>Аналитика</div>
-// const Settings = () => <div>Настройки</div>
-
 function App() {
   const dispatch = useDispatch();
   const request = useServerRequest();

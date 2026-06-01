@@ -12,9 +12,8 @@ const LayoutContainer = styled.div`
 const Main = styled.main`
   flex: 1;
   padding: ${({ theme }) => theme.spacing.lg};
-  // overflow-y: auto;
   max-width: 1400px;
-  marhin: 0 auto;
+  margin: 0 auto;
   width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {

@@ -7,8 +7,3 @@ const H2Container = ({ children, className }) => {
 export const H2 = styled(H2Container)`
 	margin: 40px 0;
 `;
-
-// import PropTypes from "prop-types";
-// H2.PropTypes = {
-// 	children: PropTypes.node.isRequired
-// };

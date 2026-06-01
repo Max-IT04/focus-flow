@@ -4,7 +4,6 @@ export const updatePassword = async (session, id, { oldPassword, newPassword }) 
     return { error: 'Нет авторизации', res: null };
   }
   
-  // Проверяем, что пользователь меняет свой пароль
   if (userFromSession.id !== id) {
     return { error: 'Нет доступа', res: null };
   }

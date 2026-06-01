@@ -99,7 +99,6 @@ const SettingsContainer = () => {
   }
 
   if (!user) {
-    // return <div>Загрузка профиля...</div>;
     return <Authorization />
   }
 
