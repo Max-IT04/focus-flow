@@ -15,7 +15,7 @@ const schema = yup.object({
     .required('Название обязательно')
     .min(3, 'Название должно быть минимум 3 символа')
     .max(50, 'Название не должно превышать 50 символов'),
-  description: yup.string(),
+  description: yup.string().max(500, 'Описание не должно превышать 500 символов'),
 });
 
 const Container = styled.div`
@@ -157,16 +157,20 @@ const ProjectFormContainer = () => {
   const request = useServerRequest();
   const { projects } = useSelector(state => state.projects);
   const [isSaving, setIsSaving] = useState(false);
+  const [charCount, setCharCount] = useState(0);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: { name: '', description: '' },
   });
+
+  const descriptionValue = watch('description', '');
 
   useEffect(() => {
     if (isEditing) {
@@ -217,6 +221,16 @@ const ProjectFormContainer = () => {
             {...register('description')} 
             placeholder="Опишите, над чем будете работать..."
           />
+          <small style={{ 
+            display: 'block', 
+            marginTop: '4px',
+            color: descriptionValue.length > 500 ? 'red' : '#64748b',
+            fontSize: '0.75rem'
+          }}>
+            {descriptionValue.length}/500 символов
+            {descriptionValue.length > 500 && ' (превышено!)'}
+          </small>
+          {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
         </FormGroup>
 
         <ButtonGroup>

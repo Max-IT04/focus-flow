@@ -17,6 +17,12 @@
       "password": "aaaaaaaa",
       "roleId": 1,
       "id": "dFOebOGk9IA"
+    },
+    {
+      "login": "bogdan@mail.ru",
+      "password": "33333333",
+      "roleId": 1,
+      "id": "K5YSBH-nqFM"
     }
   ],
   "projects": [
@@ -160,6 +166,26 @@
         "id": "WnkCwm-_cQ8"
       },
       "id": "WczRCFbXjvE"
+    },
+    {
+      "hash": "vj1p3a4vjj",
+      "user": {
+        "login": "petya@mail.ru",
+        "password": "22222222",
+        "roleId": 1,
+        "id": "U9XJxr41Oik"
+      },
+      "id": "W-EP_v9GWwQ"
+    },
+    {
+      "hash": "6jpx0tjlvrb",
+      "user": {
+        "login": "bogdan@mail.ru",
+        "password": "33333333",
+        "roleId": 1,
+        "id": "K5YSBH-nqFM"
+      },
+      "id": "OdQnJuy8hD8"
     }
   ],
   "timeSessions": [
