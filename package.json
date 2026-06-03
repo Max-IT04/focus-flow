@@ -21,8 +21,7 @@
     "react-router-dom": "^7.14.2",
     "recharts": "^3.8.1",
     "styled-components": "^6.4.1",
-    "yup": "^1.7.1",
-    "server": "json-server --watch db.json --port 3001"
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
