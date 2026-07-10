@@ -1,8 +1,4 @@
-export * from './add-user';
-export * from './get-user';
-export * from './get-session';
-export * from './add-session';
-export * from './delete-session';
+export * from './auth';
 export * from './fetch-projects';
 export * from './add-project';
 export * from './update-project';
@@ -11,4 +7,3 @@ export * from './add-time-session';
 export * from './fetch-time-sessions';
 export * from './update-user';
 export * from './update-password';
-export * from './get-session.jsx';

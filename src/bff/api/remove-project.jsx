@@ -1,23 +1,16 @@
-export const removeProject = async (session, id) => {
-  const user = session?.user;
-  if (!user) {
-    return { error: 'Нет авторизации', res: null };
-  }
+import { getToken } from './auth';
 
-  const checkResponse = await fetch(`http://localhost:3001/projects/${id}`);
-  const project = await checkResponse.json();
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-  if (project.userId !== user.id) {
-    return { error: 'Нет доступа к этому проекту', res: null };
-  }
+export const removeProject = async (id) => {
+  const token = getToken();
+  if (!token) return { error: 'Нет авторизации', res: null };
 
-  const response = await fetch(`http://localhost:3001/projects/${id}`, {
+  const response = await fetch(`${API_URL}/projects/${id}`, {
     method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (!response.ok) {
-    return { error: 'Ошибка удаления проекта', res: null };
-  }
-
+  if (!response.ok) return { error: 'Ошибка удаления проекта', res: null };
   return { error: null, res: id };
-}
+};

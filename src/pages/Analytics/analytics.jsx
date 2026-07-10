@@ -22,11 +22,11 @@ const AnalyticsContainer = () => {
 
   const projectStats = projects.map(p => ({
     name: p.name,
-    value: sessions.filter(s => s.projectId === p.id).reduce((sum, s) => sum + s.duration, 0) / 3600,
+    value: sessions.filter(s => s.project_id === p.id).reduce((sum, s) => sum + s.duration, 0) / 3600,
   }));
 
   const dailyStats = [...sessions].reduce((acc, s) => {
-    const date = new Date(s.startTime).toLocaleDateString();
+    const date = new Date(s.start_time).toLocaleDateString();
     acc[date] = (acc[date] || 0) + s.duration / 3600;
     return acc;
   }, {});
@@ -48,9 +48,9 @@ const AnalyticsContainer = () => {
   }, []);
 
   const filteredSessions = sessions.filter(s => {
-    const sessionDate = new Date(s.startTime); 
+    const sessionDate = new Date(s.start_time); 
     
-    if (filterProjectId && s.projectId !== filterProjectId) return false;
+    if (filterProjectId && s.project_id !== filterProjectId) return false;
     if (startDate && sessionDate < new Date(startDate)) return false;
     if (endDate && sessionDate > new Date(endDate)) return false;
     return true; 
@@ -59,8 +59,8 @@ const AnalyticsContainer = () => {
   const sortedSessions = [...filteredSessions].sort((a, b) => {
     if (sortBy === 'date') {
       return sortOrder === 'asc'
-        ? new Date(a.startTime) - new Date(b.startTime)
-        : new Date(b.startTime) - new Date(a.startTime);
+        ? new Date(a.start_time) - new Date(b.start_time)
+        : new Date(b.start_time) - new Date(a.start_time);
     } else {
       return sortOrder === 'asc'
       ? a.duration - b.duration
@@ -135,11 +135,11 @@ const AnalyticsContainer = () => {
       <div>
         <h3>Замеры времени ({sortedSessions.length})</h3>
           {sortedSessions.map(session => {
-            const project = projects.find(p => p.id === session.projectId);
+            const project = projects.find(p => p.id === session.project_id);
             return (
               <SessionCard key={session.id}>
                 <div><strong>{project?.name || 'Неизвестный проект'}</strong></div>
-                <div>{new Date(session.startTime).toLocaleString()}</div>
+                <div>{new Date(session.start_time).toLocaleString()}</div>
                 <div>{Math.floor(session.duration / 60)} мин {session.duration % 60} сек</div>
               </SessionCard>
             );

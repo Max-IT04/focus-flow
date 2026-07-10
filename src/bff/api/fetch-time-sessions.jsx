@@ -1,15 +1,16 @@
-export const fetchTimeSessions = async (session) => {
-  const user = session?.user;
-  if (!user) {
-    return { error: 'Нет авторизации', res: null };
-  }
+import { getToken } from './auth';
 
-  const response = await fetch(`http://localhost:3001/timeSessions?userId=${user.id}`);
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-  if (!response.ok) {
-    return { error: 'Ошибка загрузки замеров', res: null };
-  }
+export const fetchTimeSessions = async () => {
+  const token = getToken();
+  if (!token) return { error: 'Нет авторизации', res: null };
 
+  const response = await fetch(`${API_URL}/time-sessions`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (!response.ok) return { error: 'Ошибка загрузки замеров', res: null };
   const sessions = await response.json();
   return { error: null, res: sessions };
 };

@@ -42,61 +42,45 @@ const SettingsContainer = () => {
     resolver: yupResolver(passwordSchema),
   });
 
-  const handleEmailChange = async () => {
-    setEmailError(null);
-    setSuccessMessage(null);
+const handleEmailChange = async () => {
+  setEmailError(null);
+  setSuccessMessage(null);
 
-    const result = await request('updateUser', user.id, { login: email });
+  const result = await request('updateUser', { login: email, email: email });
 
-    if (result.error) {
-      setEmailError(result.error);
-    } else {
-      dispatch(setUser(result.res));
-
-      const sessionId = localStorage.getItem('session');
-      if (sessionId) {
-        const sessionResult = await request('getSession', sessionId);
-        if (!sessionResult.error && sessionResult.res) {
-          localStorage.setItem('session', sessionId);
-        }
-      }
-
-      setSuccessMessage('Email успешно обновлен');
-      setTimeout(() => window.location.reload(), 1000);
-    }
-  };
-
-  const handlePasswordChange = async (data) => {
-    setPasswordError(null);
-    setSuccessMessage(null);
-
-    const result = await request('updatePassword', user.id, {
-      oldPassword: data.oldPassword,
-      newPassword: data.newPassword,
-    });
-
-    if (result.error) {
-      setPasswordError(result.error);
-    } else {
-      reset();
-      setSuccessMessage('Пароль успешно обновлен');
-    }
-  };
-
-  const handleLogout = async () => {
-    const session = localStorage.getItem('session');
-    if (session) {
-      await request('logout', session);
-      localStorage.removeItem('session');
-    }
-
-    dispatch(logout());
-    dispatch(resetProjects());
-    dispatch(resetSessions());
-    dispatch(resetTimerState());
-    
-    navigate('/authorization');
+  if (result.error) {
+    setEmailError(result.error);
+  } else {
+    dispatch(setUser({ ...user, login: email, email: email }));
+    setSuccessMessage('Email успешно обновлен');
   }
+};
+
+const handlePasswordChange = async (data) => {
+  setPasswordError(null);
+  setSuccessMessage(null);
+
+  const result = await request('updatePassword', {
+    oldPassword: data.oldPassword,
+    newPassword: data.newPassword,
+  });
+
+  if (result.error) {
+    setPasswordError(result.error);
+  } else {
+    reset();
+    setSuccessMessage('Пароль успешно обновлен');
+  }
+};
+
+const handleLogout = async () => {
+  localStorage.removeItem('token');
+  dispatch(logout());
+  dispatch(resetProjects());
+  dispatch(resetSessions());
+  dispatch(resetTimerState());
+  navigate('/authorization');
+};
 
   if (!user) {
     return <Authorization />

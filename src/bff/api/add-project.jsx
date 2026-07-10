@@ -1,26 +1,21 @@
-export const addProject = async (session, projectData) => {
-  const user = session?.user;
-  if (!user) {
-    return { error: 'Нет авторизации', res: null };
-  }
+import { getToken } from './auth';
 
-  const response = await fetch('http://localhost:3001/projects', {
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+
+export const addProject = async (projectData) => {
+  const token = getToken();
+  if (!token) return { error: 'Нет авторизации', res: null };
+
+  const response = await fetch(`${API_URL}/projects`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json;charset=utf-8',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      name: projectData.name,
-      description: projectData.description,
-      userId: user.id,
-      createdAt: new Date().toISOString(),
-    }),
+    body: JSON.stringify(projectData),
   });
 
-  if (!response.ok) {
-    return { error: 'Ошибка создания проекта', res: null };
-  }
-
+  if (!response.ok) return { error: 'Ошибка создания проекта', res: null };
   const newProject = await response.json();
   return { error: null, res: newProject };
 };

@@ -60,7 +60,7 @@ const TimerContainer = () => {
       dispatch(setSessionsLoading(true));
       request('fetchTimeSessions', user?.id).then(({ error, res }) => {
         if (!error) {
-          const projectSessions = res.filter(s => s.projectId === currentProjectId);
+          const projectSessions = res.filter(s => s.project_id == currentProjectId);
           dispatch(setSessions(projectSessions));
         }
         dispatch(setSessionsLoading(false));
@@ -103,23 +103,22 @@ const TimerContainer = () => {
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const saveTimeSession = async () => {
-    if (seconds === 0) return;
+const saveTimeSession = async () => {
+  if (seconds === 0) return;
 
-    const result = await request('addTimeSession', {
-      projectId: currentProjectId,
-      userId: user?.id,
-      duration: seconds,
-      startTime: new Date(Date.now() - seconds * 1000).toISOString(),
-      endTime: new Date().toISOString(),
-    });
+  const result = await request('addTimeSession', {
+    project_id: currentProjectId || null,
+    duration: seconds,
+    start_time: new Date(Date.now() - seconds * 1000).toISOString(),
+    end_time: new Date().toISOString(),
+  });
 
-    if (!result.error) {
-      dispatch(addSession(result.res));
-      dispatch(resetTimer());
-      alert('Время сохранено');
-    }
-  };
+  if (!result.error) {
+    dispatch(addSession(result.res));
+    dispatch(resetTimer());
+    alert('Время сохранено');
+  }
+};
 
   if (loading && projects.length === 0) return <Loader />;
 
@@ -189,7 +188,7 @@ const TimerContainer = () => {
               sessions.map(session => (
                 <SessionItem key={session.id}>
                   <SessionDate>
-                    📅 {new Date(session.startTime).toLocaleString('ru-RU')}
+                    📅 {new Date(session.start_time).toLocaleString('ru-RU')}
                   </SessionDate>
                   <SessionDuration>
                     ⏱ {Math.floor(session.duration / 60)} мин {session.duration % 60} сек

@@ -7,6 +7,5 @@ export * from '../api/update-project';
 export * from '../api/remove-project';
 export * from '../api/fetch-time-sessions';
 export * from '../api/add-time-session';
-export * from '../api/get-session.jsx';
 export * from '../api/update-user';
 export * from '../api/update-password';

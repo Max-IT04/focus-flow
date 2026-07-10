@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useServerRequest } from "./hooks";
-import { setSession, setUser } from './store/slices/user-slice';
+import { setUser } from './store/slices/user-slice';
+import { getMe, getToken } from './bff/api/auth';
 
 import { Routes, Route } from "react-router-dom"
 import { Layout } from "./components/layout/Layout";
@@ -14,19 +14,15 @@ import { Loader } from "./components";
 
 function App() {
   const dispatch = useDispatch();
-  const request = useServerRequest();
   const [isRestoring, setIsRestoring] = useState(true);
 
   useEffect(() => {
     const restoreSession = async () => {
-      const sessionId = localStorage.getItem('session');
-      if (sessionId) {
-        const { error, res } = await request('getSession', sessionId);
+      const token = getToken();
+      if (token) {
+        const { error, res } = await getMe();
         if (!error && res) {
-          dispatch(setSession(sessionId));
-          dispatch(setUser(res.user));
-        } else if (sessionId) {
-          localStorage.removeItem('session');
+          dispatch(setUser(res));
         }
       }
       setIsRestoring(false);
@@ -52,7 +48,6 @@ function App() {
           <Route path="/settings" element={<Settings />} />
         </Route>
       </Route>
-
     </Routes>
   )
 }

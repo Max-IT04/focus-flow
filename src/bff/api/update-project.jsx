@@ -1,32 +1,21 @@
-export const updateProject = async (session, id, projectData) => {
-  const user = session?.user;
-  if (!user) {
-    return { error: 'Нет авторизации', res: null };
-  }
+import { getToken } from './auth';
 
-  const checkResponse = await fetch(`http://localhost:3001/projects/${id}`);
-  const existingProject = await checkResponse.json();
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-  if (existingProject.userId !== user.id) {
-    return { error: 'Нет доступа к этому проекту', res: null };
-  }
+export const updateProject = async (id, projectData) => {
+  const token = getToken();
+  if (!token) return { error: 'Нет авторизации', res: null };
 
-  const response = await fetch(`http://localhost:3001/projects/${id}`, {
+  const response = await fetch(`${API_URL}/projects/${id}`, {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json;charset=utf-8',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      ...existingProject,
-      name: projectData.name,
-      description: projectData.description, 
-    }), 
+    body: JSON.stringify(projectData),
   });
 
-  if (!response.ok) {
-    return { error: 'Ошибка обновления проекта', res: null };
-  }
-
+  if (!response.ok) return { error: 'Ошибка обновления проекта', res: null };
   const updatedProject = await response.json();
   return { error: null, res: updatedProject };
 };
