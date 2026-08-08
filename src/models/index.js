@@ -1,7 +1,7 @@
 const sequelize = require('../config/database');
-const User = require('./User');
-const Project = require('./Project');
-const TimeSession = require('./TimeSession');
+const User = require('./User.mongo');
+const Project = require('./Project.mongo');
+const TimeSession = require('./TimeSession.mongo');
 
 const syncDatabase = async () => {
   await sequelize.sync({ alter: true });
